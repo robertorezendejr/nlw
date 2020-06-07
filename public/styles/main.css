@@ -1,0 +1,36 @@
+
+/* o root é um atalho que se repete no caso abaixo para uma cor de título
+Para aplicar exemplo:        color: var(--title-color) */
+:root {
+    --title-color: #322153;
+    --primary-color: #34cb79;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #f0f0f5;
+
+    /* -webkit-font-smoothing: antialiased; deixa a fonte mais suavisada */
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--title-color);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+

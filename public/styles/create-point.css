@@ -1,0 +1,207 @@
+/* width 90%; a largura maxima é de 90 pixels
+mas se chegar ao maximo de 1100 ele não aumenta mais
+margin: 0 auto; o zero vai fazer com que em cima e embaixo seja zero mas o auto deixa
+espaçamento automático automático */
+#page-create-point {
+    width: 90%;
+    max-width: 1100px;
+
+    /* alinhamento da caixa pelo lado de fora da caixa, pelo lado de dentro é display flex */
+    margin: 0 auto;
+}
+
+
+/* justify-content: space-between vai fazer um cara ficar para um lado criar
+um espaço no meio e jogar o outro item para o outro.
+align-items: center; para deixar os itens na mesma altura */
+#page-create-point header {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#page-create-point header a {
+    color: var(--title-color);
+    font-weight: bold;
+
+    /* itens adicionados para fazer a imagen da seta para baixo voltar */
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* só puxar a imagem não vai fazer aparecer, necessita fazer os comandos abaixo (dentro do span)
+ depois tem que ir no header a acima e botar o display flex para ficar um ao lado do outro
+ e depois tem que botar align-items: center; para ficarem na mesma altura*/
+#page-create-point header a span {
+    margin-right: 16px;
+    background-image: url('../assets/icones/arrow-left.svg');
+    display: flex;
+    width: 20px;
+    height: 24px;
+
+}
+
+form {
+    background-color: white;
+    margin: 80px auto;
+
+    /* padding é o preenchimento 
+    border-radius para arredondar a borda*/
+    padding: 64px;
+    border-radius: 8px;
+    max-width: 730px;
+}
+
+form h1 {
+    font-size: 36px;
+}
+
+form fieldset {
+    margin-top: 64px;
+    border: 0;
+}
+
+form legend {
+    margin-bottom: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+form legend h2 {
+    font-size: 24px;
+}
+
+form legend span {
+    font-size: 14px;
+    color: var(--title-color);
+}
+
+form .field {
+    /* flex: 1; serve para esticar os itens dentro, espalhando o formulário nesse
+    caso */
+    flex: 1;
+    display: flex;
+
+    /* se eu deixar normal vai ficar no padrão como display flex um ao lado do outro
+    por isso foi chamado column, para ficar abaixo */
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+form .field-group {
+    display: flex;
+}
+
+form input,
+form select {
+    background-color: #f0f0f5;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+
+    /* outline none serve para tirar o quadrado em volta do texto que fica selecionado, quando estamos
+    digitando em um campo */
+    /* outline: none; */
+}
+
+form select {
+    /* abaixo é para tirar as configurações que os browsers entendem que deve ser.
+    dessa forma torna o padrão que fizermos em todos os navegadores */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+form label {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* a junção dos 02 .fild está fazendo com que o efeito se aplique ao segundo */
+form .field-group .field + .field {
+    margin-left: 24px;
+}
+
+form button {
+    width: 260px;
+    height: 56px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    margin-top: 40px;
+    /* essa transição ajuda a suavisar o hover abaixo */
+    transition: background-color 400ms;
+}
+
+form button:hover {
+    background-color: #2fb86e;
+    /* quando fizer o hover é necessário fazer uma trnaisção para deixar o efeito mais elegante
+    inserindo: transition: 400ms; transição de 400 milesegundos */
+}
+
+/* Aqui termina o formulário e iníca os itens de reciclagem abaixo pilhas, papaelão, óleo... */
+
+
+/* o display flex deixa um itens ao lado do outro como vimos.
+O display grid trabalha com colunas. no exemplo abaixo 200px x 3 quer dizer que teremos 3 colunas
+de 200px cada uma 
+ou 1fr 1fr, 1fr quer dizer que são 3 mas o css vai fazer as contas qual porcentagem vai deixar cada*/
+.items-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* usamos o MARGIN para dar margem nas coisas mas exites a propriedade chamada GAP que automatiza no css grid */
+    gap: 16px;
+}
+
+.items-grid li {
+    background-color: #f5f5f5;
+    list-style: none;
+    border: 2px solid #f5f5f5;
+    border-radius: 8px;
+    height: 180px;
+    padding: 32px 24px 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    text-align: center;
+
+    /* cursor point faz o mouse virar mãozinha quando passa por alguma imagem ou coisa */
+    cursor: pointer;    
+
+}
+
+.items-grid li span {
+    margin-top: 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    color: var(--title-color);
+}
+
+.items-grid li.selected {
+    background: #e1faec;
+    border: 2px solid #34cb79;
+}
+
+/* isso faz com que no javascript quando clicar por exemplo na lampada não apareça o nome lampada
+quado clica no nome lampada ñ pararece nome lampada, tipo agrupando imagens do excel */
+.items-grid li img,
+.items-grid li span {
+    pointer-events: none;
+}
+
